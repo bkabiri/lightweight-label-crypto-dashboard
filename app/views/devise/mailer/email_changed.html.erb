@@ -1,7 +1,6 @@
-<p>Hello <%= @email %>!</p>
-
-<% if @resource.try(:unconfirmed_email?) %>
-  <p>We're contacting you to notify you that your email is being changed to <%= @resource.unconfirmed_email %>.</p>
-<% else %>
-  <p>We're contacting you to notify you that your email has been changed to <%= @resource.email %>.</p>
-<% end %>
+<%# Informational: your email address changed %>
+<%= render partial: "devise/mailer/_card_email",
+           locals: { title: "Your email was changed",
+                     body_html: "Your Utila account email has just been changed to <strong>#{ERB::Util.html_escape(@email)}</strong>.",
+                     cta_text: nil, cta_url: nil,
+                     footer_html: "If you didn’t make this change, please reset your password immediately." } %>

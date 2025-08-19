@@ -1,35 +1,38 @@
-
 <!-- app/views/home/landing.html.erb -->
-<div class="relative overflow-hidden bg-white">
-  <section class="mx-auto max-w-7xl px-6 pt-16 pb-12 lg:px-8 lg:pt-24 lg:pb-20 text-center">
-    <div class="mb-4 flex justify-center gap-2">
-      <span class="badge border-gray-200 text-gray-600">Simple</span>
-      <span class="badge border-gray-200 text-gray-600">Secure</span>
-      <span class="badge border-gray-200 text-gray-600">Scalable</span>
-    </div>
-    <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-      Manage your digital asset operations on one platform
-    </h1>
-    <p class="mt-6 text-lg leading-8 text-gray-600">
-      Secure and control crypto assets across multiple blockchains, wallets, teams and users in one place. Build on top of our comprehensive wallet infrastructure with the highest levels of security and governance.
-    </p>
-    <div class="mt-10 flex justify-center gap-x-6">
-      <a href="#" class="rounded-xl bg-black px-6 py-3 text-white font-semibold shadow hover:shadow-md">Get Started Now</a>
-      <a href="#features" class="text-sm font-semibold leading-6 text-gray-900">Learn more</a>
-    </div>
-  </section>
 
-  <!-- Logos -->
-  <section class="border-t bg-gray-50">
-    <div class="mx-auto max-w-7xl px-6 py-10 lg:px-8">
-      <p class="text-center text-xs font-medium tracking-wider text-gray-500">TRUSTED BY LEADING INSTITUTIONS</p>
-      <div class="mt-6 grid grid-cols-2 items-center gap-8 md:grid-cols-4 lg:grid-cols-6">
-        <% ["mobee","MJ","Fasanara","Psailon","arca","MS PAY","vield","konto","MANDIOCA","Karatage","stable"].each do |logo| %>
-          <div class="brand-card flex items-center justify-center rounded-lg border bg-white px-3 py-4 text-gray-400">
-            <span class="text-sm font-semibold"><%= logo %></span>
-          </div>
-        <% end %>
-      </div>
+<section class="mx-auto max-w-7xl px-6 pt-16 pb-12 lg:px-8 lg:pt-24 lg:pb-20 text-center">
+  <div class="mb-4 flex justify-center gap-2">
+    <span class="badge border-gray-200 text-gray-600">Simple</span>
+    <span class="badge border-gray-200 text-gray-600">Secure</span>
+    <span class="badge border-gray-200 text-gray-600">Scalable</span>
+  </div>
+
+  <!-- Smaller headline -->
+  <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+    Your brand, your users, their Web3 — launch a fully branded wallet dashboard in days, not months
+  </h1>
+
+  <p class="mt-6 text-base leading-7 text-gray-600 max-w-3xl mx-auto">
+    Let your community connect with MetaMask and instantly view their balances, NFTs, and transactions — all under your brand.
+    Fast to deploy, easy to customize, built for Web3 startups and NFT projects.
+  </p>
+
+  <div class="mt-10 flex justify-center gap-x-6">
+    <a href="#" class="rounded-xl bg-black px-6 py-3 text-white font-semibold shadow hover:shadow-md">Get Started Now</a>
+    <a href="#features" class="text-sm font-semibold leading-6 text-gray-900">Learn more</a>
+  </div>
+</section>
+
+<!-- Logos -->
+<section class="border-t bg-gray-50">
+  <div class="mx-auto max-w-7xl px-6 py-10 lg:px-8">
+    <p class="text-center text-xs font-medium tracking-wider text-gray-500">TRUSTED BY LEADING INSTITUTIONS</p>
+    <div class="mt-6 grid grid-cols-2 items-center gap-8 md:grid-cols-4 lg:grid-cols-6">
+      <% ["mobee","MJ","Fasanara","Psailon","arca","MS PAY","vield","konto","MANDIOCA","Karatage","stable"].each do |logo| %>
+        <div class="brand-card flex items-center justify-center rounded-lg border bg-white px-3 py-4 text-gray-400">
+          <span class="text-sm font-semibold"><%= logo %></span>
+        </div>
+      <% end %>
     </div>
-  </section>
-</div>
+  </div>
+</section>

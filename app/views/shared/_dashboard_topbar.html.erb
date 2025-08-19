@@ -1,0 +1,76 @@
+<!-- app/views/shared/_dashboard_topbar.html.erb -->
+<header class="sticky top-0 z-30 h-12 bg-white">
+  <div class="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <!-- Left: (optional burger) -->
+    <div class="flex items-center gap-3">
+      <button type="button" aria-label="Open menu"
+              class="inline-flex md:hidden items-center justify-center rounded-lg px-2.5 py-2 hover:bg-gray-50">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Right: Connect + icons -->
+    <div class="flex items-center gap-4">
+      <!-- MetaMask connect -->
+      <div data-controller="wallet" class="flex items-center">
+        <button
+          data-wallet-target="button"
+          data-action="wallet#connectWallet"
+          class="rounded-lg bg-black px-3.5 py-1.5 text-sm font-medium text-white shadow hover:shadow-md">
+          Connect MetaMask
+        </button>
+        <!-- Show address + network after connect (hidden on small screens) -->
+        <span class="ml-3 hidden text-sm text-gray-700 md:inline">
+          <span data-wallet-target="address" class="font-mono"></span>
+          <span class="text-gray-400">·</span>
+          <span data-wallet-target="network" class="font-mono"></span>
+        </span>
+      </div>
+
+      <!-- Icons (no borders) -->
+      <div class="flex items-center gap-3 text-gray-600">
+        <button class="p-2 hover:text-gray-900" title="Theme" aria-label="Theme">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414M7.05 7.05L5.636 5.636m12.728 0l-1.414 1.414M7.05 16.95l-1.414 1.414"/>
+            <circle cx="12" cy="12" r="4" stroke-width="1.8"/>
+          </svg>
+        </button>
+        <button class="p-2 hover:text-gray-900" title="Notifications" aria-label="Notifications">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h11z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13.73 21a2 2 0 01-3.46 0"/>
+          </svg>
+        </button>
+        <button class="p-2 hover:text-gray-900" title="Currency" aria-label="Currency">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M12 8c-2.21 0-4 1.343-4 3s1.79 3 4 3 4 1.343 4 3-1.79 3-4 3m0-18v2m0 16v2"/>
+          </svg>
+        </button>
+        <button class="p-2 hover:text-gray-900" title="Visibility" aria-label="Visibility">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/>
+            <circle cx="12" cy="12" r="3" stroke-width="1.8"/>
+          </svg>
+        </button>
+        <button class="p-2 hover:text-gray-900" title="Account" aria-label="Account">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M5.121 17.804A7 7 0 0112 15a7 7 0 016.879 2.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </button>
+        <button class="p-2 hover:text-gray-900" title="Help" aria-label="Help">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 10a4 4 0 118 0c0 2-2 2-2 4M12 18h.01"/>
+            <circle cx="12" cy="12" r="9" stroke-width="1.8"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

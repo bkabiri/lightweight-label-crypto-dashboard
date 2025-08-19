@@ -1,10 +1,35 @@
 @import "tailwindcss";
 
-/* optional plugins
+/* Optional plugins (uncomment if you’ve added them via tailwind.config.js)
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
 */
 
-/* your Tailwind-based classes */
-.badge { @apply inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium; }
-.brand-card { @apply grayscale opacity-70 hover:opacity-100 transition; }
+/* ---- Custom utilities ---- */
+
+/* Pill badges used in hero */
+.badge {
+  @apply inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-medium;
+}
+
+/* Grayscale client logos */
+.brand-card {
+  @apply grayscale opacity-70 transition hover:opacity-100;
+}
+
+/* Reusable brand pill for logos or quick tags */
+.brand-pill {
+  @apply flex items-center justify-center rounded-lg border bg-white px-3 py-3 text-gray-500 hover:bg-gray-50;
+}
+
+/* Optional: card shadow that matches your auth screens */
+.card-shadow {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Panels & chips (Rotki-style) */
+.panel { @apply rounded-2xl border border-gray-200 bg-white shadow-sm; }
+.panel-muted { @apply rounded-xl border border-gray-200 bg-white; }
+.btn-chip { @apply rounded-md border px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50; }
+.btn-chip--active { @apply rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white; }
+.kbd { @apply rounded border px-1 text-xs text-gray-400; }

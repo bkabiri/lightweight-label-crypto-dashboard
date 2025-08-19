@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "App" %></title>
+    <title><%= content_for(:title) || "Lightweight Label Crypto Dashboard" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#ffffff">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= yield :head %>
 
     <link rel="manifest" href="/manifest.json">
@@ -15,20 +16,32 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <!-- ethers.js v5 CDN (for simple account/network reads) -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5/dist/ethers.min.js"></script>
   </head>
 
-  <body class="min-h-screen bg-gray-50 text-gray-900">
-  <% auth_page = controller_path.start_with?("devise/") %>
-  <%= render("shared/navbar") unless auth_page %>
+  <body class="min-h-screen bg-white text-gray-900">
+    <% auth_page = controller_path.start_with?("devise/") %>
 
-  <% if auth_page %>
-    <%= yield %>   <!-- no container here -->
-  <% else %>
-    <main class="container mx-auto mt-20 px-5">
-      <%= yield %>
-    </main>
-  <% end %>
-</body>
+    <%= render("shared/navbar") unless auth_page %>
+
+    <!-- Flash messages -->
+    <% if notice.present? %>
+      <div class="mx-auto max-w-7xl px-6 mt-4 rounded-xl bg-green-100 text-green-900 py-3"><%= notice %></div>
+    <% end %>
+    <% if alert.present? %>
+      <div class="mx-auto max-w-7xl px-6 mt-4 rounded-xl bg-red-100 text-red-900 py-3"><%= alert %></div>
+    <% end %>
+
+    <% if auth_page %>
+      <%= yield %> <!-- Devise pages use full-bleed card layout -->
+    <% else %>
+      <main class="container mx-auto mt-20 px-5">
+        <%= yield %>
+      </main>
+    <% end %>
+  </body>
 </html>

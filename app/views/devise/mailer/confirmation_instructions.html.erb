@@ -1,5 +1,8 @@
-<p>Welcome <%= @email %>!</p>
-
-<p>You can confirm your account email through the link below:</p>
-
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<%# Sent when a user needs to confirm their email %>
+<% url = confirmation_url(@resource, confirmation_token: @token) %>
+<%= render partial: "devise/mailer/_card_email",
+           locals: { title: "Confirm your email",
+                     body_html: "Tap the button below to confirm your email and finish creating your account.",
+                     cta_text: "Confirm email",
+                     cta_url: url,
+                     footer_html: "If the button doesn’t work, copy and paste this link:<br><a href='#{url}' style='color:#4F5BFF;'>#{url}</a>" } %>

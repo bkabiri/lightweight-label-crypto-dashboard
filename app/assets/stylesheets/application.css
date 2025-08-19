@@ -1,5 +1,7 @@
 /*
- *= require_self
+ * Custom non-Tailwind CSS (optional).
+ * No Sprockets directives here.
  */
-:root { --brand-accent: #6b46c1; }
-.hero-shadow { box-shadow: 0 10px 30px rgba(0,0,0,.06); }
+
+/* Example: tweak link focus ring */
+a:focus { outline: none; }

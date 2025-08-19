@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   # Everyone else sees the landing page
   root to: "home#landing"
+  resources :wallets, only: [:create]
 
   # Health/PWA (keep your existing ones)
   get "up" => "rails/health#show", as: :rails_health_check
