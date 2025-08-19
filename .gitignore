@@ -14,3 +14,5 @@ cat > .gitignore <<'EOF'
 .DS_Store
 *.swp
 EOF
+/app/assets/builds/*
+!/app/assets/builds/.keep

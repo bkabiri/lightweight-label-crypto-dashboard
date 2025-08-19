@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* optional plugins (uncomment if you add them) */
+/* @plugin "@tailwindcss/forms"; */
+/* @plugin "@tailwindcss/typography"; */
+
+/* Your Tailwind-based custom classes go here */
+.badge { @apply inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium; }
+.brand-card { @apply grayscale opacity-70 hover:opacity-100 transition; }
+CSS
