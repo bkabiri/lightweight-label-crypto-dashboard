@@ -1,12 +1,13 @@
 <nav class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b">
   <div class="mx-auto max-w-7xl px-6 py-3 flex items-center justify-between">
     <!-- Brand -->
-    <a href="#" class="flex items-center gap-2 font-semibold text-gray-900">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <circle cx="8" cy="12" r="4"></circle><circle cx="16" cy="12" r="4"></circle>
+    <%= link_to root_path, class: "flex items-center gap-2 font-semibold text-gray-900" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+        <circle cx="8" cy="12" r="4"></circle>
+        <circle cx="16" cy="12" r="4"></circle>
       </svg>
-      <span class="text-lg">utila</span>
-    </a>
+      <span class="text-lg">tokenlab</span>
+    <% end %>
 
     <!-- Desktop menu -->
     <ul class="hidden md:flex items-center gap-6 text-sm text-gray-700">
@@ -17,8 +18,7 @@
             <path d="M6 8l4 4 4-4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
-        <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition
-                    absolute left-0 top-full mt-2 w-56 rounded-xl border bg-white shadow p-2">
+        <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition absolute left-0 top-full mt-2 w-56 rounded-xl border bg-white shadow p-2">
           <a href="#" class="block rounded-lg px-3 py-2 hover:bg-gray-50">Treasury</a>
           <a href="#" class="block rounded-lg px-3 py-2 hover:bg-gray-50">Payments</a>
           <a href="#" class="block rounded-lg px-3 py-2 hover:bg-gray-50">Custody</a>
@@ -32,8 +32,7 @@
             <path d="M6 8l4 4 4-4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
-        <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition
-                    absolute left-0 top-full mt-2 w-56 rounded-xl border bg-white shadow p-2">
+        <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition absolute left-0 top-full mt-2 w-56 rounded-xl border bg-white shadow p-2">
           <a href="#" class="block rounded-lg px-3 py-2 hover:bg-gray-50">Case studies</a>
           <a href="#" class="block rounded-lg px-3 py-2 hover:bg-gray-50">Testimonials</a>
         </div>
@@ -49,8 +48,7 @@
             <path d="M6 8l4 4 4-4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
-        <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition
-                    absolute left-0 top-full mt-2 w-56 rounded-xl border bg-white shadow p-2">
+        <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition absolute left-0 top-full mt-2 w-56 rounded-xl border bg-white shadow p-2">
           <a href="#" class="block rounded-lg px-3 py-2 hover:bg-gray-50">About</a>
           <a href="#" class="block rounded-lg px-3 py-2 hover:bg-gray-50">Careers</a>
         </div>
@@ -59,10 +57,13 @@
 
     <!-- Right (desktop) -->
     <div class="hidden md:flex items-center gap-6">
-      <a href="#" class="text-sm text-gray-700 hover:text-gray-900">Log In</a>
-      <a href="#" class="inline-flex items-center rounded-xl bg-black px-4 py-2 text-white text-sm font-semibold shadow hover:shadow-md">
-        Get Started Now
-      </a>
+      <% if user_signed_in? %>
+        <%= link_to "Dashboard", authenticated_root_path, class: "text-sm text-gray-700 hover:text-gray-900" %>
+        <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-sm text-gray-700 hover:text-gray-900" %>
+      <% else %>
+        <%= link_to "Log In", new_user_session_path, class: "text-sm text-gray-700 hover:text-gray-900" %>
+        <%= link_to "Get Started Now", new_user_registration_path, class: "inline-flex items-center rounded-xl bg-black px-4 py-2 text-white text-sm font-semibold shadow hover:shadow-md" %>
+      <% end %>
     </div>
 
     <!-- Mobile toggle -->
@@ -84,8 +85,13 @@
       <li><a href="#" class="block py-2 text-gray-700">Security</a></li>
       <li><a href="#" class="block py-2 text-gray-700">Company</a></li>
       <li class="pt-2 flex items-center justify-between">
-        <a href="#" class="text-gray-700">Log In</a>
-        <a href="#" class="inline-flex items-center rounded-xl bg-black px-4 py-2 text-white font-semibold">Get Started Now</a>
+        <% if user_signed_in? %>
+          <%= link_to "Dashboard", authenticated_root_path, class: "text-gray-700" %>
+          <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-gray-700" %>
+        <% else %>
+          <%= link_to "Log In", new_user_session_path, class: "text-gray-700" %>
+          <%= link_to "Get Started Now", new_user_registration_path, class: "inline-flex items-center rounded-xl bg-black px-4 py-2 text-white font-semibold" %>
+        <% end %>
       </li>
     </ul>
   </div>

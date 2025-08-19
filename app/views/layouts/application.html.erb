@@ -19,10 +19,16 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="min-h-screen bg-white text-gray-900">
-  <%= render "shared/navbar" %>
-  <main class="container mx-auto mt-16 px-5">
-    <%= yield %>
-  </main>
+  <body class="min-h-screen bg-gray-50 text-gray-900">
+  <% auth_page = controller_path.start_with?("devise/") %>
+  <%= render("shared/navbar") unless auth_page %>
+
+  <% if auth_page %>
+    <%= yield %>   <!-- no container here -->
+  <% else %>
+    <main class="container mx-auto mt-20 px-5">
+      <%= yield %>
+    </main>
+  <% end %>
 </body>
 </html>
