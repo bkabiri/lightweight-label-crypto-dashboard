@@ -1,0 +1,16 @@
+cat > .gitignore <<'EOF'
+/log/*
+/tmp/*
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/node_modules
+/public/assets
+/storage/*
+/.bundle
+/vendor/bundle
+.byebug_history
+.env
+.env.*
+.DS_Store
+*.swp
+EOF

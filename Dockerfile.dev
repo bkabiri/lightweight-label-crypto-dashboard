@@ -1,0 +1,28 @@
+# Dev image — fast boot, no asset precompile
+ARG RUBY_VERSION=3.3.0   # or 3.3.x you prefer
+FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
+
+# System deps for Rails + Postgres
+RUN apt-get update -qq \
+ && apt-get install -y --no-install-recommends build-essential libpq-dev nodejs curl \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Speed up bundler on first run
+ENV BUNDLE_PATH=/usr/local/bundle \
+    BUNDLE_JOBS=4 \
+    BUNDLE_RETRY=3
+
+COPY Gemfile Gemfile.lock /app/
+RUN bundle install || true
+
+COPY . /app
+
+# Simple entrypoint for dev
+RUN printf '#!/usr/bin/env bash\nset -e\nrm -f /app/tmp/pids/server.pid 2>/dev/null || true\nexec "$@"\n' > /usr/local/bin/dev-entrypoint \
+ && chmod +x /usr/local/bin/dev-entrypoint
+
+EXPOSE 3000
+ENTRYPOINT ["dev-entrypoint"]
+CMD ["bash", "-lc", "bin/rails server -b 0.0.0.0 -p 3000"]
